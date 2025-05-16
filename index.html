@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TypeCrusher: Become a Typing Legend</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-bolt fa-lg"></i>
+                    <h1>Type<span>Crusher</span></h1>
+                </a>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="#hero-section" class="active-nav"><i class="fas fa-home"></i><span>Home</span></a></li>
+                        <li><a href="#practice-section"><i class="fas fa-keyboard"></i><span>Practice</span></a></li>
+                        <li><a href="#drills-section"><i class="fas fa-dumbbell"></i><span>Drills</span></a></li>
+                        <li><a href="#progress-section"><i class="fas fa-chart-line"></i><span>Progress</span></a></li>
+                        <li><a href="#results-section"><i class="fas fa-poll"></i><span>Results</span></a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <button id="darkModeToggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                    <button id="mobile-menu-toggle" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero page-section" id="hero-section">
+                <h2>Become a Typing Legend</h2>
+                <p>Unlock your ultimate typing potential. Our adaptive system, targeted drills, and comprehensive analytics will guide you from novice to a true keyboard virtuoso, ready for any challenge.</p>
+                <button class="btn btn-primary btn-lg" id="start-typing-hero-btn"><i class="fas fa-play-circle"></i> Start Your Journey</button>
+            </section>
+
+            <section class="page-section typing-app-container" id="practice-section">
+                <div class="app-header">
+                    <div class="app-title" id="current-exercise-title">Precision Typing Practice</div>
+                    <div class="controls">
+                        <div class="select-wrapper">
+                            <select id="difficulty" aria-label="Select Difficulty">
+                                <option value="easy">Easy</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="hard">Hard</option>
+                                <option value="expert">Expert</option>
+                                <option value="legendary">Legendary</option>
+                            </select>
+                        </div>
+                        <div class="select-wrapper">
+                            <select id="mode" aria-label="Select Mode">
+                                <option value="standard" selected>Standard Text</option>
+                                <option value="code">Code Snippets</option>
+                                <option value="quotes">Famous Quotes</option>
+                                <option value="random">Random Words</option>
+                                <option value="adaptive">Adaptive Training</option>
+                                <option value="drills">Targeted Drills</option>
+                            </select>
+                        </div>
+                         <div class="select-wrapper" id="drill-selector-wrapper" style="display:none;">
+                            <select id="drill-type" aria-label="Select Drill Type">
+                                <!-- Options populated by JS -->
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" id="restart-btn">
+                            <i class="fas fa-redo-alt"></i> Restart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="countdown">Get Ready...</div>
+                
+                <div class="text-display-wrapper">
+                    <div class="text-display" id="text-display" tabindex="0" aria-live="polite" aria-atomic="true"></div>
+                    <div class="cursor" id="cursor" aria-hidden="true"></div>
+                </div>
+                <input type="text" class="text-input" id="text-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Typing input field">
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-title">WPM</div>
+                        <div class="stat-value" id="wpm">0</div>
+                        <div class="stat-sub-value" id="personal-best-wpm">PB: 0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Accuracy</div>
+                        <div class="stat-value" id="accuracy">0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Time</div>
+                        <div class="stat-value" id="time">0:00</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Errors</div>
+                        <div class="stat-value" id="errors-stat">0</div>
+                    </div>
+                </div>
+
+                <div class="keyboard" aria-hidden="true">
+                    <div class="row">
+                        <div class="key" data-key="192" data-char="`" data-shift-char="~">`</div> <div class="key" data-key="49" data-char="1" data-shift-char="!">1</div> <div class="key" data-key="50" data-char="2" data-shift-char="@">2</div> <div class="key" data-key="51" data-char="3" data-shift-char="#">3</div> <div class="key" data-key="52" data-char="4" data-shift-char="$">4</div> <div class="key" data-key="53" data-char="5" data-shift-char="%">5</div> <div class="key" data-key="54" data-char="6" data-shift-char="^">6</div> <div class="key" data-key="55" data-char="7" data-shift-char="&">7</div> <div class="key" data-key="56" data-char="8" data-shift-char="*">8</div> <div class="key" data-key="57" data-char="9" data-shift-char="(">9</div> <div class="key" data-key="48" data-char="0" data-shift-char=")">0</div> <div class="key" data-key="189" data-char="-" data-shift-char="_">-</div> <div class="key" data-key="187" data-char="=" data-shift-char="+">=</div> <div class="key special" data-key="8">Backspace</div>
+                    </div>
+                    <div class="row">
+                        <div class="key special" data-key="9">Tab</div> <div class="key" data-key="81" data-char="q">Q</div> <div class="key" data-key="87" data-char="w">W</div> <div class="key" data-key="69" data-char="e">E</div> <div class="key" data-key="82" data-char="r">R</div> <div class="key" data-key="84" data-char="t">T</div> <div class="key" data-key="89" data-char="y">Y</div> <div class="key" data-key="85" data-char="u">U</div> <div class="key" data-key="73" data-char="i">I</div> <div class="key" data-key="79" data-char="o">O</div> <div class="key" data-key="80" data-char="p">P</div> <div class="key" data-key="219" data-char="[" data-shift-char="{">[</div> <div class="key" data-key="221" data-char="]" data-shift-char="}">]</div> <div class="key special" data-key="220" data-char="\" data-shift-char="|">\</div>
+                    </div>
+                    <div class="row">
+                        <div class="key special" data-key="20">Caps Lock</div> <div class="key" data-key="65" data-char="a">A</div> <div class="key" data-key="83" data-char="s">S</div> <div class="key" data-key="68" data-char="d">D</div> <div class="key" data-key="70" data-char="f">F</div> <div class="key" data-key="71" data-char="g">G</div> <div class="key" data-key="72" data-char="h">H</div> <div class="key" data-key="74" data-char="j">J</div> <div class="key" data-key="75" data-char="k">K</div> <div class="key" data-key="76" data-char="l">L</div> <div class="key" data-key="186" data-char=";" data-shift-char=":">;</div> <div class="key" data-key="222" data-char="'" data-shift-char=""">'</div> <div class="key special" data-key="13">Enter</div>
+                    </div>
+                    <div class="row">
+                        <div class="key special" data-key="16" data-side="left">Shift</div> <div class="key" data-key="90" data-char="z">Z</div> <div class="key" data-key="88" data-char="x">X</div> <div class="key" data-key="67" data-char="c">C</div> <div class="key" data-key="86" data-char="v">V</div> <div class="key" data-key="66" data-char="b">B</div> <div class="key" data-key="78" data-char="n">N</div> <div class="key" data-key="77" data-char="m">M</div> <div class="key" data-key="188" data-char="," data-shift-char="<">,</div> <div class="key" data-key="190" data-char="." data-shift-char=">">.</div> <div class="key" data-key="191" data-char="/" data-shift-char="?">/</div> <div class="key special" data-key="16-R" data-side="right">Shift</div>
+                    </div>
+                    <div class="row">
+                        <div class="key special" data-key="17" data-side="left">Ctrl</div> <div class="key special" data-key="91">Win</div> <div class="key special" data-key="18" data-side="left">Alt</div> <div class="key space" data-key="32" data-char=" ">Space</div> <div class="key special" data-key="18-R" data-side="right">Alt</div> <div class="key special" data-key="17-R" data-side="right">Ctrl</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="page-section drills-section" id="drills-section" style="display:none;">
+                 <h2>Targeted Drills</h2>
+                 <p class="section-subtitle">Hone specific skills with these focused exercises to conquer your weaknesses.</p>
+                 <div class="drills-grid" id="drills-grid-container">
+                     <!-- Drill cards will be populated by JS -->
+                 </div>
+            </section>
+
+            <section class="page-section results-section" id="results-section" style="display:none;">
+                <h3>Practice Session Results</h3>
+                <div class="chart-container">
+                    <canvas id="sessionSpeedChart"></canvas>
+                </div>
+                <div class="detailed-stats-container">
+                    <div class="detail-card">
+                        <div class="detail-title">Character Accuracy Breakdown</div>
+                        <div class="detail-list" id="character-stats"></div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-title">Most Common Errors (Expected <i class="fas fa-long-arrow-alt-right"></i> Typed)</div>
+                        <div class="detail-list" id="problem-keys"></div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="try-again-btn"><i class="fas fa-redo"></i> Try Another Round</button>
+                <button class="btn btn-secondary" id="view-overall-progress-btn" style="margin-left: 10px;"><i class="fas fa-chart-bar"></i> View Overall Progress</button>
+            </section>
+
+            <section class="page-section progress-section" id="progress-section" style="display:none;">
+                <h2>Your Overall Typing Progress</h2>
+                <div class="chart-container" style="height: 400px;">
+                    <canvas id="overallProgressChart"></canvas>
+                </div>
+                <h3 class="table-title">Recent Sessions History</h3>
+                <div class="table-wrapper">
+                    <table id="progress-history-table" aria-label="Typing progress history">
+                        <thead>
+                            <tr><th>Date</th><th>Mode</th><th>Difficulty</th><th>WPM</th><th>Accuracy</th><th>Errors</th><th>Length</th></tr>
+                        </thead>
+                        <tbody><!-- Populated by JS --></tbody>
+                    </table>
+                </div>
+                 <button class="btn btn-danger" id="clear-progress-btn" style="margin-top: 20px;"><i class="fas fa-trash-alt"></i> Clear All Progress Data</button>
+            </section>
+
+             <section class="page-section">
+                <h2>How to Become a Typing Legend</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <i class="fas fa-bullseye"></i>
+                        <h4>Consistent Practice</h4>
+                        <p>Aim for short, regular practice sessions rather than long, infrequent ones. Daily 15-30 minutes is highly effective.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-crosshairs"></i>
+                        <h4>Focus on Accuracy First</h4>
+                        <p>Speed will naturally follow accuracy. Concentrate on minimizing errors before pushing for higher WPM.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h4>Use Adaptive & Drills</h4>
+                        <p>Leverage Adaptive Training to target your weak spots and use Drills to hone specific keyboarding skills.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-chart-pie"></i>
+                        <h4>Analyze Your Results</h4>
+                        <p>Pay attention to your error patterns and character accuracy to understand where you need to improve.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">About TypeCrusher</a>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="View Source on Github"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Connect on LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="copyright">
+                © <span id="currentYear"></span> TypeCrusher. All rights reserved. Forge Your Legend.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    
+    <!-- Order of JS files can be important for dependencies -->
+    <script src="js/texts.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/adaptive.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
